@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+    div{
+        width: 400px;
+        height: 60px;
+        border: 1px solid black;
+        position: absolute;
+        left: 50%;
+        top:50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+        box-shadow: 3px 3px 3px rgb(36, 33, 33);
+        background: linear-gradient(to top,#f6f6f6,#eae8e8)
+    }
+    input{
+        height: 35px;
+        width:260px;
+        margin-right: 20px;
+        border-radius:5px;
+        box-shadow: 2px 2px 2px #000;
+        outside: none;
+        font-size: 18px;
+    }
+    button{
+        height: 35px;
+        width: 60px;
+        border-radius:5px;
+        background:linear-gradient(to top right ,green ,blue);
+        text-align: center;
+        line-height: 35px;
+        font-size: 18px;
+        color: #fff;
+        font-weight: 700;
+        box-shadow: 2px 2px 2px #000;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text">
+        <button>提交</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+/* html,body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #f40;
+    overflow: hidden;
+}
+.wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.section{
+    width: 100%;
+    height: 100%;;
+    background-color: aqua;
+    text-align: center;
+} */

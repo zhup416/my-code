@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+            text-decoration:none;
+            list-style:none;
+        }
+        /* .content{
+            display: none;
+            width:200px;
+            height:200px;
+            border:1px solid black;
+        }
+        .active{
+            background:red;
+        } */
+        .wrapper > div {
+            display: none;
+            width: 200px;
+            height: 200px;
+            border:1px solid black;
+        }
+        .wrapper > div:target{
+            display: block;
+        }
+        a:hover{
+            background: #f40;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <a href="#zy">周一</a>
+    <a href="#ze">周二</a>
+    <a href="#zs">周三</a>
+    <div class="wrapper">
+    <div id="zy">
+        <ul>
+            <li>123asda</li>
+            <li>456</li>
+            <li>789</li>
+            <li>135sdasd</li>
+            <li>246</li>
+        </ul>
+    </div>
+    <div id="ze">
+        <ul>
+            <li>123asd</li>
+            <li>456asd</li>
+            <li>789asd</li>
+            <li>135asd</li>
+            <li>246asd</li>
+        </ul>
+    </div>
+    <div id="zs">
+        <ul>
+            <li>123</li>
+            <li>456</li>
+            <li>789</li>
+            <li>135</li>
+            <li>246</li>
+        </ul>
+    </div>
+    </div>
+    <!-- <button class="active">周一</button>
+    <button>周二</button>
+    <button>周三</button>
+    <div class="content" style = "display:block">1</div>
+    <div class="content">2</div>
+    <div class="content">3</div>
+    <script>
+        var oBtn = document.getElementsByTagName('button');
+        var oDiv = document.getElementsByClassName('content');
+        for(var i = 0 ; i < oBtn.length ; i++){
+            (function(n){
+                oBtn[n].onclick = function(){
+                for(var j = 0; j < oDiv.length ; j ++){
+                    oDiv[j].style.display = 'none';
+                    oBtn[j].className = '';
+
+                }
+             this.className = "active";
+             oDiv[n].style.display = "block";
+            }
+            })(i)
+        }
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div id="app">
+        <course-list :list="courseList"></course-list>
+        <course-list :list="courseList"></course-list>
+    </div>
+    <script>
+
+        var courseList = {
+            props: {
+                list: [Array, String],
+            },
+            data: function () {
+                return {
+                    totalPrice: [],
+                    filterArr: [],
+                    allPrice: 0,
+                    listArr:this.list.concat([])
+                }
+            },
+            methods: {
+                buy(i, price) {
+                    // if (this.filterArr[i]) {
+                    //     return
+                    // } else {
+                    //     this.$set(this.filterArr, i, true)
+                    //     this.totalPrice.push(price)
+                    //     this.allPrice = this.totalPrice.reduce((prev, cur) => {
+                    //         return prev + cur
+                    //     });
+                    // }
+                    this.listArr.splice(i,1)
+                    console.log(i)
+                    console.log(price)
+
+                },
+                revPrice(i,price){
+                    if(!this.filterArr[i]){
+                        return
+                    }
+                    if(!this.totalPrice){
+                        this.allPrice = 0
+                    }
+                    var ind = this.totalPrice.findIndex(item=>{
+                        return item == price
+                    })
+                    this.filterArr.splice(i,1,false)
+                    this.totalPrice.splice(ind,1)
+
+                    if(this.totalPrice == 0){
+                        this.allPrice = 0
+                        return
+                    }
+                    this.allPrice = this.totalPrice.reduce((prev, cur) => {
+                            return prev + cur
+                        });
+                }
+            },
+            template: `<ul>
+              <li class="container" 
+                    v-for="(item,index) in listArr" 
+                    :key="item.poster"
+                    @click="buy(index,item.price)"
+                    @click.right.prevent = "revPrice(index,item.price)"
+                    :class="{'active':filterArr[index]}">
+                 <div class="left">
+                    <img :src="item.poster" alt="">
+                    <div v-if="item.free">{{item.buyNUmber}}人报名</div>
+                    <div v-else>{{item.buyNUmber}}人购买</div>
+            </div>
+                <div class="right" >
+                    <div class="course">{{item.name}}</div>
+                    <div class="free" v-if="item.free">免费</div>
+                    <div class="jiage" v-else>
+                        <p>回放</p>
+                        <p>￥{{item.price}}</p>
+                    </div>
+                </div>
+            </li>
+            <div>合计：{{allPrice}}</div>
+        </ul>`
+
+        }
+        var vm = new Vue({
+            el: '#app',
+            components: {
+                courseList: courseList
+            },
+            data: {
+                courseList: [
+                    {
+                        "name": "javaScript教程",
+                        "free": true,
+                        "playback": false,
+                        "price": 0,
+                        "buyNUmber": 330,
+                        "poster": "./img/0.jpg"
+                    },
+                    {
+                        "name": "javaScript教程",
+                        "free": true,
+                        "playback": false,
+                        "price": 0,
+                        "buyNUmber": 5555,
+                        "poster": "./img/1.jpg"
+                    },
+                    {
+                        "name": "javaScript教程",
+                        "free": false,
+                        "playback": true,
+                        "price": 888,
+                        "buyNUmber": 664,
+                        "poster": "./img/2.jpg"
+                    },
+                    {
+                        "name": "javaScript教程",
+                        "free": false,
+                        "playback": true,
+                        "price": 666,
+                        "buyNUmber": 888,
+                        "poster": "./img/3.jpg"
+                    },
+                    {
+                        "name": "javaScript教程",
+                        "free": false,
+                        "playback": true,
+                        "price": 999,
+                        "buyNUmber": 12,
+                        "poster": "./img/4.jpg"
+                    },
+                    {
+                        "name": "javaScript教程",
+                        "free": true,
+                        "playback": false,
+                        "price": 0,
+                        "buyNUmber": 884,
+                        "poster": "./img/5.jpg"
+                    },
+                    {
+                        "name": "javaScript教程",
+                        "free": true,
+                        "playback": false,
+                        "price": 0,
+                        "buyNUmber": 669,
+                        "poster": "./img/6.jpg"
+                    },
+                    {
+                        "name": "javaScript教程",
+                        "free": true,
+                        "playback": false,
+                        "price": 0,
+                        "buyNUmber": 777,
+                        "poster": "./img/7.jpg"
+                    }
+                ]
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

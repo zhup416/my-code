@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        .active{
+            font-size: 40px
+        }
+        .non{
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model.trim="val" @keyup.enter ="addTask">
+        <button @click="addTask">提交</button>
+        <span>{{wank}}</span>
+        
+        <ol type="a">
+            <li v-for="(item,index) in inpValue" :key="item">{{item}} <button @click="del(index)">X</button></li>
+        </ol type="a">
+        <h2>已完成任务</h2>
+        <ol type="a">
+            <li v-for="item in delValue" :key="item">{{item}}</li>
+        </ol type="a">
+        
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                wank: '',
+                val: "",
+                inpValue: [],
+                delValue: []
+
+
+            },
+            methods: {
+                del(index){
+                   this.delValue.push(...this.inpValue.splice(index,1))
+                    // this.inpValue.splice(index,1)
+                },
+                addTask() {
+                    // this.inpValue = this.inpValue.push('this.val')
+                    
+                    // this.val=''
+                    if(this.val == ''){
+                        this.wank = '不能输入空值'
+                        return
+                    }
+                    if(this.inpValue.includes(this.val)){
+                        this.wank = '不能输入重复的值'
+                        this.val = ''
+                        return
+                    }
+                        this.inpValue.push(this.val)
+                        this.val = ''
+                        this.wank = ''
+                    
+                }
+
+            },
+            computed: {
+                
+                
+            },
+        })
+
+    </script>
+
+</body>
+
+</html>

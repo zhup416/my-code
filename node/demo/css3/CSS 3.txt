@@ -1,0 +1,147 @@
+css3选择器
+选择器权重：（！important【无穷大】）> (行间样式【1000】)>（id【100】）>(class、属性选择器、伪类选择器【10】)>（标签选择器、伪元素选择器【1】）>(*通配符选择器【0】）
+属性选择器：ele[attribute="val"]  val可以是单字母
+            ele[attribute^="val"]属性有以val字段开头的，可以选出来
+            ele[attribute$="val"]属性有以val字段结尾的，可以选出来
+            ele[attribute*="val"]属性含有val字段，可以选出来
+            ele[attribute~="val"]属性含有val单词，可以选出来
+伪类选择器：:root{} 等同于html{} 作用整个页面
+
+            ele:not([attribute = “val”]) {} 除含有attribute = “val”的标签之外，选出其他所有标签
+
+            ele:empty{}选出元素没有文档内容（连空格都没有）的标签
+
+            ele:target{} 点击那个元素哪个元素就变target的样式
+
+            :first-child 第一个孩子元素
+            :last-child 最后一个孩子元素
+            :nth-child(n) 第几个元素
+            ::nth-last-child(n) 从后面往前数
+            :nth-child(2n) 0 2 4 6 ...元素
+            :nth-child(2n+1) 1 3 5  ...元素
+            :nth-child(n+2) 选出第二个元素之后的
+            :first-of-type 同类元素中排第一个的
+            :last-of-type
+            同类元素中倒数排第一个的
+            :last-last-of-type
+            :only-child 唯一子选择器 没有兄弟元素
+
+            :ensabled 可用
+            :disabled 不可用
+            :checked 选中
+
+伪元素选择器
+        ::selection 选中文本是背景和文字发生变化
+        ::first-letter 元素第一个字符
+        ::first-line   元素第一行
+        ::after{content:''} content 样式内容
+        ::before{content:''}
+
+条件选择器
+        ele>f 直接子元素选择器
+        e+f紧挨着的兄弟节点
+        e~f后面的兄弟节点
+
+
+框模型
+border 
+border-image：URL（）  number  （默认stretch拉伸/repeat重复排布/round （content宽度/border宽度）值四舍五入 ）
+border-radius:20px;复合值
+border-radius:20px 20px 20px 20px;
+border-top-left-radius: 20px 30px;
+
+box-shadow:水平偏移量 竖直偏移量 阴影模糊半径 阴影扩展半径 阴影颜色 投射方式
+        可以重复设置内外阴影 只需要在一项设置完后加 逗号，设置下一项
+
+背景图片模块
+background-image:url(./img/pic.jpg);
+background-origin:padding-box/border-box/content-box;  背景图片从哪里开始排布；
+background-clip:padding-box/border-box/content-box;    背景图片从哪里开始往外裁剪，留下内部图片
+background-size:auto不改变照片的原始尺寸
+                contain 按比例扩大缩小 让背景图片完整存放
+                cover 按最大边存放 超出部分截断
+                百分百
+                长度值
+background-repeat: repeat/norepeat;
+background-color:
+background-position:从内容区域开始排布
+background-attachment:scroll默认/fixed固定不动
+
+
+盒模型
+从里到外顺序 margin>background-color>background-image>padding>content>border
+box-sizing:border-box(iE6)/content-box(w3c)
+
+  内容溢出overflow:hidden隐藏/vasible默认-正常展示/scroll滚动条/auto自适应
+overflow-x：只要设置hidden/scroll ，另外一个值超出就有一个默认值为scroll
+overflow-y：只要设置hidden/scroll ，另外一个值超出就有一个默认值为scroll
+
+弹性盒模型 display:flex;
+需在容器设置 display:flex  伸缩项目在子元素设置
+以下是伸缩项目
+        flex-shrink 缩放比例；默认值是1
+        flex-grow 拉伸比例 将多出的部分按比例分配 默认值0
+        flex-basis: n px; 相当于 分配比例按flex-basis为基准 占据主轴空间
+        flex 是复合属性  flex:flex-grow flex-shrink flex-basis;
+        order 子项目排列顺序
+        align-self:flex-start 布置侧轴的顶端
+        align-self:flex-end   布置侧轴的底端
+        align-self:center 布局侧轴中间
+        baseline 基线对齐   文字第一行对齐
+        stretch
+
+        决定主轴方向 flex-direction:row 默认-水平方向 / column 竖直方向
+        溢出换行  flex-wrap:nowrap不换行/wrap 换行
+        flex-flow:flex-direction flex-wrap 复合属性
+想让子项目沿侧轴对齐可以在容器中设置样式 align-item：center/伸缩项目开始方向flex-start/项目结束方向flex-end/baseline 文字第一行对齐
+想让子项目沿主轴对齐可以在容器中设置样式 justify-content:center/ 伸缩项目开始方向flex-start/项目结束方向flex-end/把剩余的空间平均分布在每两个子元素中间space-between/把剩余的空间分配在每个元素的两侧space-around
+
+超级变幻形态
+transform 可以实现元素的形状，角度，位置等的变化
+transform 变换属性
+        rotate（30deg） 默认以Z轴旋转角度  （以X/y/z轴旋转）
+                rotateX()
+                rotateY()
+                rotateZ()
+        scale(x,y)  填数字  以x，y轴进行缩放 可以接受两个值，也可以填一个 当填一个值得时候默认为进行X轴缩放；
+                scaleX(),scaleY(),scaleZ()
+                scale3d(x,y,z)
+        skew() 对元素进行倾斜扭曲
+                skew(x,y) 当输入一个值时为默认为x轴方向
+                skewX()   skewY()
+        translate() 可以移动距离，相对于自身位置
+                translate3d(xpx,ypx,zpx)
+                translatex(),translatey(),translatez()
+
+        transform-origin变换原点
+                ransform-oridin:top left right bottom 自由组合
+
+        transition过度动画 复合属性
+                transition-property 指定过度或者动态模拟css属性
+                transition-duration 指定过度所需要的时间
+                transition-function 指定过度函数 （linear 匀速   ease 慢快慢 ）
+                transition-delay    指定开始出现的延迟时间
+
+3D变换              
+     在容器中设置 transform-style:flat 平面/ preserve-3d 3d
+     同时还需要设置景深这样才能看出效果 perspective：+距离像素；
+     perspection-origin :默认值 50% 50%
+
+     backface-visibility : hidden  / visible  背面隐藏/可见
+
+animation 动画   复合属性
+        animation-name：执行动画的 keyframe的名；
+        animation-duration：动画执行的时间
+        animation-timing-function 执行动画过渡函数速率（linear  ease）
+        animation-delay： 执行动画延迟时间
+        animation-direction 动画运动方向 normal 正常方向/ reserve 反向 /alternate 交替运动 / alternate-reserve  反向交替运动
+        animation-iteration-count： infinite 无限运动/ number 次数
+        animation-fill-mode: forwards 动画运动结束的位置为关键帧100%的位置
+                             backwards 动画运动结束的位置为关键帧0%的位置
+                             both      动画运动结束的位置为关键帧0%+100%的位置
+                             none
+        animation-play-state :  pause 暂停 /  running 运动
+        @keyframe move {  }
+
+
+

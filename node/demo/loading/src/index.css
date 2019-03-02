@@ -1,0 +1,149 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.wrapper{
+    background-color: #bbbb;
+    width: 400px;
+    height: 250px;
+    margin: 150px auto;
+    overflow: hidden;
+}
+
+.first,.demo,.eye{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.first{
+    /* display: none; */
+    width: 400px;
+    height: 250px;
+}
+.demo{
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    background-color: blue;
+    position: relative;
+    animation: jump 0.8s infinite alternate;
+}
+@keyframes jump {
+    0%{
+        transform: translateY(-50%);
+        box-shadow:  1px 50px 50px 5px  rgba(0, 0, 0, 0.2);
+    }
+    100%{
+        transform: translateY(0%);
+        box-shadow:1px 0px 5px rgba(0, 0, 0, 0)
+    }
+}
+.demo::before,.demo::after{
+    content: "";
+    display: block;
+    position:absolute;
+    top:0;
+    width:15px;
+    height: 5px;
+    transform: rotate(45deg) translate(-5px) ;
+    background-color: #fff;
+}
+.demo::before{
+    transform: rotate(45deg) translate(-5px) ;
+}
+.demo::after{
+    transform: rotate(-45deg) translate(5px) ;
+}
+.eye{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.circle{
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+    background-color: deeppink;
+    animation: move 1.5s infinite ;
+}
+@keyframes move {
+    0%{
+        transform: translateX(-40%)
+    }
+    24%{
+        transform: translateX(40%)
+    }
+    40%{
+        transform: translateX(40%)
+    }
+    74%{
+        transform: translateX(-40%)
+    }
+    100%{
+        transform: translateX(-40%)
+    }
+}
+.mouse{
+    width: 25px;
+    height: 8px;
+    margin-top: 15px;
+    background-color: deeppink;
+    border-radius: 30%
+}
+.progress{
+    position: relative;
+    width: 300px;
+    height: 10px;
+    margin-top: 40px;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.bar{
+    position: absolute;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #000;
+    animation: progress 2s linear forwards;
+}
+@keyframes progress {
+    0%{
+        left: -300px;
+    }
+    100%{
+        left: 0px; 
+    }
+}
+.second {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 400px;
+   height: 250px;
+
+}
+.text-part{
+    margin-right: 30px;
+    color: #fff;
+}
+.demo-part{
+    display: flex;
+}
+.demo:nth-of-type(1){
+    margin-right: 20px;
+    background-color: deeppink;
+}
+.demo:nth-of-type(1) .circle{
+    background-color: blue;
+}
+.demo:nth-of-type(1) .mouse{
+    background-color: blue;
+}
+.demo:nth-of-type(2){
+    animation: jump 0.8s infinite 1s alternate;
+}

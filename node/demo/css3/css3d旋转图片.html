@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3d变换</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    /* .wrapper{
+        width: 500px;
+        height:500px;
+        border:1px solid black;
+        margin:100px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform-style: preserve-3d;
+        perspective: 600px;
+        perspective-origin: 50% 0%;
+        
+    }
+    .box{
+        width: 500px;
+        height: 200px;
+        background-color: #f40;
+        transform: rotateX(30deg);
+        
+    } */
+    
+    .wrapper{
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform-style: preserve-3d;
+        /* perspective: 600px;
+        perspective-origin: top 75%; */
+        position: absolute;
+        left:50%;
+        top:50%;
+        margin-top: -250px;
+        margin-left:-250px;
+        animation: move 5s linear ;
+            
+    }
+    .demo{
+        width:200px;
+        height: 120px;
+        background-color: #d12121;
+        position: absolute;
+        background-size: 100% 100%;
+    }
+    @keyframes move {
+        form{
+            transform: rotateX(-30deg) rotateY(0deg)  ;
+        }
+        to{
+            transform: rotateX(-30deg) rotateY(360deg) ;
+        }
+    }
+    .demo:nth-child(1){
+        background-color: rgba(rgb(189, 22, 22), rgb(38, 218, 38), blue, 0.5);
+        transform: rotateY(60deg) translateZ(200px);
+        background-image: url(1.jpg);
+    }
+    .demo:nth-child(2){
+        background-color: rgba(rgb(189, 22, 22), rgb(38, 218, 38), blue, 0.5);
+        transform: rotateY(120deg) translateZ(200px);
+        background-image: url(2.jpg);
+    }
+    .demo:nth-child(3){
+        background-color: rgba(rgb(189, 22, 22), rgb(38, 218, 38), blue, 0.5);
+        transform: rotateY(180deg) translateZ(200px);
+        background-image: url(3.jpg);
+    }
+    .demo:nth-child(4){
+        background-color: rgba(rgb(189, 22, 22), rgb(38, 218, 38), blue, 0.5);
+        transform: rotateY(240deg) translateZ(200px);
+        background-image: url(4.jpg);
+    }
+    .demo:nth-child(5){
+        background-color: rgba(rgb(189, 22, 22), rgb(38, 218, 38), blue, 0.5);
+        transform: rotateY(300deg) translateZ(200px);
+        background-image: url(5.jpg);
+    }
+    .demo:nth-child(6){
+        background-color: rgba(rgb(189, 22, 22), rgb(38, 218, 38), blue, 0.5);
+        transform: rotateY(0deg) translateZ(200px);
+        background-image: url(6.jpg);
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="demo">
+
+        </div>
+        <div class="demo">
+
+        </div>
+        <div class="demo">
+
+        </div>
+        <div class="demo">
+
+        </div>
+        <div class="demo">
+
+        </div>
+        <div class="demo">
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="cag">切换</button>
+        <keep-alive>
+                <component :is="which"></component>
+        </keep-alive>
+    </div>
+    <script>
+        var cmpOne = {
+            template:`<div>
+                组件1：<input type="text"></input>
+                </div>`
+        }
+        var cmpTwo = {
+            template:`<div>
+                组件2：<input type="text"></input>
+                </div>`
+        }
+        var vm = new Vue({
+            el:"#app",
+            components:{
+                one:cmpOne,
+                two:cmpTwo,            
+            },
+            data:{
+                which:'one'
+            },
+            methods: {
+                cag(){
+                    this.which = this.which == 'one' ? 'two' : 'one'
+                }
+            },
+        })
+    </script>
+</body>
+</html>
